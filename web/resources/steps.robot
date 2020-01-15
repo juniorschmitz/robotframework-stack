@@ -7,6 +7,7 @@ Abrir navegador
     Open Browser                    http://spotlab.herokuapp.com/       chrome
     Set Selenium Implicit Wait      10
 Fechar navegador
+    Capture Page Screenshot
     Close Browser
 
 ### Steps
