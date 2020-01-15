@@ -17,11 +17,16 @@ Nova sessao
     Entao devo ver a area logada
 
 Email incorreto
-    Dado que "eu&papito.io" e o meu email
-    Quando eu entro com este email
-    Entao devo ver o alerta "Oops. Informe um email válido!"
+    [Template] Tentativa de login
+    eu&batman.com
 
 Email nao informado
-    Dado que "${EMPTY}" e o meu email
+    [Template] Tentativa de login
+    ${EMPTY}
+
+*** Keywords ***
+Tentativa de login
+    [Arguments]                         ${email}
+    Dado que "${email}" e o meu email
     Quando eu entro com este email
     Entao devo ver o alerta "Oops. Informe um email válido!"
