@@ -18,15 +18,15 @@ Nova sessao
 
 Email incorreto
     [Template] Tentativa de login
-    eu&batman.com
+    eu&batman.com       Oops. Informe um email válido!
 
 Email nao informado
     [Template] Tentativa de login
-    ${EMPTY}
+    ${EMPTY}            Oops. Informe um email válido!
 
 *** Keywords ***
 Tentativa de login
-    [Arguments]                         ${email}
+    [Arguments]                         ${email}    ${alert}
     Dado que "${email}" e o meu email
     Quando eu entro com este email
-    Entao devo ver o alerta "Oops. Informe um email válido!"
+    Entao devo ver o alerta "${alert}"
