@@ -53,5 +53,6 @@ Quando eu faço o cadastro deste spot
     Click Element   //button[contains(text(), 'Cadastrar')]        
 
 Entao devo ver o spot e valor da diaria no dashboard
-    Element Should Contain      class:spot-list     ${company}
-    Element Should Contain      class:spot-list     R$${price}/dia
+    Wait Until Element Is Visible       css:.spot-list li
+    Element Should Contain              class:spot-list     ${company}
+    Element Should Contain              class:spot-list     R$${price}/dia
