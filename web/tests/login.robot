@@ -3,7 +3,7 @@ Documentation   Sessao
 ...     Para que eu possa ter acesso a interface de administraçao de spots
 ...     Sendo um usuario que possui um email
 ...     Quero poder iniciar um nova sessao
-Resource        '../resources/steps.robot'
+Resource        ../resources/steps.robot
 
 Test Setup          Abrir navegador
 Test Teardown       Fechar navegador

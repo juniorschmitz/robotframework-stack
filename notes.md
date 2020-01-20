@@ -1,5 +1,11 @@
+## About run Forrest
+
+Example
+robot -d .\logs tests\spots.robot
+
 ## About BDD, BDT and ATDD
 
+Examples
 ```python
 *** Settings ***
 Documentation   Sessao
@@ -40,3 +46,20 @@ Novo spot ATDD
     Clico em cadastrar
     Devo ver um novo spot no meu dashboard
 ```
+
+## About Faker
+
+Examples
+pip install robotframework-faker
+
+Colocar Library FakerLibrary
+Exemplo no passo do nome da empresa para colocar o nome fake:
+${fakecompany}=     FakerLibrary.Company
+Input Text      css:input[placeholder=*empresa]     ${fakecompany}
+
+
+## About MongoDB
+Dependencies (use Robot 3T as software interface for mongodb connections)
+pip uninstall -y bson pymongo
+pip install bson==0.5.7
+pip install pymongo==3.7.2
