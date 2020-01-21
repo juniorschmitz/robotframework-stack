@@ -47,12 +47,13 @@ E o valor da diaria e de "${price}" reais
     Set Global Variable         ${price}
 
 Quando eu faço o cadastro deste spot
-    Click Link      /new
-    Choose File     css:#thumbnail input                        ${CURDIR}/img/${picture}
-    Input Text      css:input[placeholder*=empresa]             ${company}
-    Input Text      id:techs                                    ${techs}
-    Input Text      css:input[placeholder^=Valor]               ${price}
-    Click Element   //button[contains(text(), 'Cadastrar')]
+    Click Link          /new
+    Run Keyword if      "${picture}"
+    ...                 Choose File     css:#thumbnail input                        ${CURDIR}/img/${picture}
+    Input Text          css:input[placeholder*=empresa]             ${company}
+    Input Text          id:techs                                    ${techs}
+    Input Text          css:input[placeholder^=Valor]               ${price}
+    Click Element       //button[contains(text(), 'Cadastrar')]
 
 Entao devo ver o spot e valor da diaria no dashboard
     Wait Until Element Is Visible       css:.spot-list li
