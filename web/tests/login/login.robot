@@ -3,7 +3,7 @@ Documentation   Sessao
 ...     Para que eu possa ter acesso a interface de administraçao de spots
 ...     Sendo um usuario que possui um email
 ...     Quero poder iniciar um nova sessao
-Resource        ../resources/steps.robot
+Resource        ../../resources/login_steps.robot
 
 Test Setup          Abrir navegador
 Test Teardown       Fechar navegador
@@ -12,16 +12,16 @@ Test Teardown       Fechar navegador
 *** Test Cases ***
 
 Nova sessao
-    Dado que "eu@papito.io" e o meu email
+    Dado que "batman@teste.com" e o meu email
     Quando eu entro com este email
     Entao devo ver a area logada
 
 Email incorreto
-    [Template] Tentativa de login
+    [Template]  Tentativa de login
     eu&batman.com       Oops. Informe um email válido!
 
 Email nao informado
-    [Template] Tentativa de login
+    [Template]  Tentativa de login
     ${EMPTY}            Oops. Informe um email válido!
 
 *** Keywords ***

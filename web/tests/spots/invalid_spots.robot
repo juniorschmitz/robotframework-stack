@@ -3,7 +3,7 @@ Documentation   Invalid Spot
 ...     Para que eu possa disponibilizar spots para locação
 ...     Sendo um administrador de spots
 ...     Quero poder cadastrar novas empresas
-Resource            ../resources/steps.robot
+Resource            ../../resources/spot_steps.robot
 
 Test Setup      Run Keywords    Dado que estou logado como Admin
 Test Teardown   Fechar navegador

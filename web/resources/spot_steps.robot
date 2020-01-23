@@ -1,35 +1,9 @@
 *** Settings ***
-Library     SeleniumLibrary
-Library     ./libs/mongo.py
+Resource     base.robot
 
 *** Keywords ***
-### Hooks
-Abrir navegador
-    Open Browser                    http://spotlab.herokuapp.com/       chrome
-    Set Selenium Implicit Wait      10
-Fechar navegador
-    Capture Page Screenshot
-    Close Browser
-
-### Login   Steps
-Dado que "#{email}" e o meu email
-    Set Global Variable     ${email}
-
-Quando eu entro com este email
-    Input text                      id:email        ${email}
-    Click Element                   css:button[type=submit]
-
-Entao devo ver a area logada
-    Sleep                           5
-    Page Should Contain Element     class:dashboard
-
-Entao devo ver o alerta "${expect_alert}"
-    Element Text Should Be      class:alert     ${expect_alert}
-
-
-###  Spot Steps
 Dado que estou logado como Admin
-    steps.Abrir navegador
+    base.Abrir navegador
     Input Text                  id: email       teste@batman.com
     Click Element               css: button[type=submit]
 
