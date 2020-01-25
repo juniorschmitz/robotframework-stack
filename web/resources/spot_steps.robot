@@ -2,10 +2,15 @@
 Resource     base.robot
 
 *** Keywords ***
+Dado que estou logado como "${email}"
+    base.Abrir navegador
+    Input Text                  ${INPUT_EMAIL}       ${email}
+    Click Element               ${BTN_LOGIN}
+
 Dado que estou logado como Admin
     base.Abrir navegador
-    Input Text                  id: email       teste@batman.com
-    Click Element               css: button[type=submit]
+    Input Text                  ${INPUT_EMAIL}       batman@teste.com
+    Click Element               ${BTN_LOGIN}
 
 E que eu tenho um spot disponivel na empresa "${company}"
     Set Global Variable         ${company}
@@ -20,20 +25,34 @@ E usamos as seguintes tecnologias "${techs}"
 E o valor da diaria e de "${price}" reais
     Set Global Variable         ${price}
 
+E nao vou cobrar a diaria
+    Set Global Variable         ${price}    0
+
 Quando eu faço o cadastro deste spot
     Click Link          /new
     Run Keyword if      "${picture}"
-    ...                 Choose File     css:#thumbnail input                        ${CURDIR}/img/${picture}
-    Input Text          css:input[placeholder*=empresa]             ${company}
-    Input Text          id:techs                                    ${techs}
-    Input Text          css:input[placeholder^=Valor]               ${price}
-    Click Element       //button[contains(text(), 'Cadastrar')]
+    ...                 Choose File     ${INPUT_FILE}               ${CURDIR}/img/${picture}
 
-Entao devo ver o spot e valor da diaria no dashboard
-    Wait Until Element Is Visible       css:.spot-list li
-    Element Should Contain              class:spot-list         ${company}
-    Element Should Contain              class:spot-list         R$${price}/dia
+    Input Text          ${INPUT_ENTERPRISE}                         ${company}
+    Input Text          ${INPUT_TECHS}                              ${techs}
+    Run Keyword if      ${price} > 0
+    ...                 Input Text          ${INPUT_VALUE}                             ${price}
+
+    Click Element       ${BTN_REGISTER_SPOT}
+
+Entao devo ver o spot no dashboard
+    Wait Until Element Is Visible       ${LI_SPOT_ITEM}
+    Element Should Contain              ${UL_SPOT_LIST}       ${company}
+
+E o valor da diaria "${value}"
+    Element Should Contain              ${UL_SPOT_LIST}       ${value}
 
 Entao devo ver o alerta de erro "${alert}"
-    Wait Until Element Is Visible       css:.alert-error
-    Element Should Contain              css:.alert-error       ${alert}
+    Wait Until Element Is Visible       ${ALERT_ERROR}
+    Element Should Contain              ${ALERT_ERROR}           ${alert}
+
+Mas eu ja tenho 4 spots cadastrados
+
+Quando acesso o dashboard
+
+Entao devo ver a seguinte mensagem "Voce pode cadastrar ate 4 spots"

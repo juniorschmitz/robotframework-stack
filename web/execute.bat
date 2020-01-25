@@ -1,0 +1,1 @@
+robot -d ./logs -e todo tests\

@@ -2,6 +2,8 @@
 Library     SeleniumLibrary
 Library     ./libs/mongo.py
 
+
+Resource    pages/elements.robot
 *** Keywords ***
 Abrir navegador
     Open Browser                    about:blank       chrome
@@ -12,3 +14,5 @@ Abrir navegador
 Fechar navegador
     Capture Page Screenshot
     Close Browser
+
+### Shared steps here if any
