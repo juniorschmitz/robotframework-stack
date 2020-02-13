@@ -9,7 +9,7 @@ Dado que estou logado como Admin
 
 E que eu tenho um spot disponivel na empresa "${company}"
     Set Global Variable         ${company}
-    Remove Company              ${company}
+    Remove Spot By Company      ${company}
 
 E este spot possui a imagem "${picture}"
     Set Global Variable         ${picture}
