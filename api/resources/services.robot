@@ -54,3 +54,25 @@ Save Spot Without Image
     ${response}=    Post Request    spotapi     /spots  data=${payload}     headers=${headers}
     
     [return]        ${response}
+
+Save Spot List
+    [Arguments]     ${json_file}
+
+    ${my_spots}=     Get File         resources/fixtures/${json_file}
+    ${json}=         Evaluate         json.loads('''${my_spots}''')    json
+    ${data}=         Set Variable     ${json['data']}
+
+    :FOR    ${item}     IN      @{data}
+
+    \       ${thumb}=           Get From Dictionary     ${item}         thumb
+    \       ${payload}=         Get From Dictionary     ${item}         payload
+    \       Save Spot           ${payload}      ${thumb}
+
+### /dashboard
+Get My Spots
+    Create Session  spotapi     ${base_uri}
+
+    &{headers}=     Create Dictionary       user_id=${token}
+    ${response}=    Get Request             spotapi     /dashboard      headers=${headers}
+
+    [return]        ${response}

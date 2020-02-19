@@ -1,7 +1,7 @@
 *** Settings ***
 Library     OperatingSystem
 
-Resource    ../resources/services.robot
+Resource    ../../resources/services.robot
 
 Suite Setup     Set Token   jacques@teste.com
 
