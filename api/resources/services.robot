@@ -68,15 +68,6 @@ Save Spot List
     \       ${payload}=         Get From Dictionary     ${item}         payload
     \       Save Spot           ${payload}      ${thumb}
 
-### /dashboard
-Get My Spots
-    Create Session  spotapi     ${base_uri}
-
-    &{headers}=     Create Dictionary       user_id=${token}
-    ${response}=    Get Request             spotapi     /dashboard      headers=${headers}
-
-    [return]        ${response}
-
 Get Spot By Id
     [arguments]     ${spot_id}
 
@@ -86,4 +77,21 @@ Get Spot By Id
     ${response}=    Get Request     spotapi     /spots/${spot_id}   headers=${headers}
 
     [return]        ${response}
-    
+
+Get Spot By Filter
+    [Arguments]     ${tech}
+
+    Create Session  spotapi     ${base_uri}
+
+    ${response}=    Get Request     spotapi     /spots?tech=${tech}
+    [return]        ${response}
+
+
+### /dashboard
+Get My Spots
+    Create Session  spotapi     ${base_uri}
+
+    &{headers}=     Create Dictionary       user_id=${token}
+    ${response}=    Get Request             spotapi     /dashboard      headers=${headers}
+
+    [return]        ${response}
