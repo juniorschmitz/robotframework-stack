@@ -7,6 +7,7 @@ Suite Setup     Set Token   jacques@teste.com
 
 *** Test Cases ***
 Create a new Spot
+    [tags]      smoke
     &{payload}=                 Create Dictionary   company=Google  techs=java, golang  price=50
     Remove Spot By Company      ${payload['company']}
 

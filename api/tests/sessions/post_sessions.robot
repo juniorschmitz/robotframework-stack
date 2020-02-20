@@ -3,6 +3,7 @@ Resource    ../../resources/services.robot
 
 *** Test Cases ***
 New Session
+    [tags]      smoke
     &{payload}=      Create Dictionary      email=batman@jacques.com
     ${response}=     Post Session           ${payload}
     ${code}=         Convert To String      ${response.status_code}

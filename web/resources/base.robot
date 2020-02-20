@@ -2,6 +2,8 @@
 Library     SeleniumLibrary
 Library     ./libs/mongo.py
 
+Resource    pages/elements.robot
+
 *** Keywords ***
 Abrir navegador
     Open Browser                    about:blank       chrome
