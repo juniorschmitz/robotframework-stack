@@ -76,3 +76,14 @@ Get My Spots
     ${response}=    Get Request             spotapi     /dashboard      headers=${headers}
 
     [return]        ${response}
+
+Get Spot By Id
+    [arguments]     ${spot_id}
+
+    Create Session  spotapi     ${base_uri}
+    &{headers}=     Create Dictionary       user_id=${token}
+
+    ${response}=    Get Request     spotapi     /spots/${spot_id}   headers=${headers}
+
+    [return]        ${response}
+    
