@@ -27,7 +27,7 @@ Set Token
     &{headers}=     Create Dictionary       Content-Type=application/json
 
     ${response}=    Post Session  ${payload}
-    ${token}      Convert To String   ${response.json()['_id']}
+    ${token}        Convert To String   ${response.json()['_id']}
     
     Set Suite Variable  ${token}
 
@@ -69,7 +69,7 @@ Save Spot List
     \       Save Spot           ${payload}      ${thumb}
 
 Get Spot By Id
-    [arguments]     ${spot_id}
+    [Arguments]     ${spot_id}
 
     Create Session  spotapi     ${base_uri}
     &{headers}=     Create Dictionary       user_id=${token}
@@ -94,4 +94,12 @@ Get My Spots
     &{headers}=     Create Dictionary       user_id=${token}
     ${response}=    Get Request             spotapi     /dashboard      headers=${headers}
 
+    [return]        ${response}
+
+### /spots/delete
+Delete Spot By Id
+    [Arguments]     ${spot_id}
+    Create Session  spotapi     ${base_uri}
+    &{headers}=     Create Dictionary       user_id=${token}
+    ${response}=    Post Request     spotapi     /spots/delete/${spot_id}   headers=${headers}
     [return]        ${response}
