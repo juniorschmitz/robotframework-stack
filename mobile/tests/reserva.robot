@@ -5,7 +5,7 @@ Test Setup      Abrir App
 Test Teardown   Fechar App
 
 *** Test Cases ***
-Login no APP
+Solicitar Reserva
   Wait Until Page Contains        SEU E-MAIL    ${waitTime}
   Input Text                      accessibility_id=emailInput     jacques@test.com
   Input Text                      accessibility_id=techsInput     Ruby, Python
