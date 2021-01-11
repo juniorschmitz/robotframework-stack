@@ -63,3 +63,10 @@ Dependencies (use Robot 3T as software interface for mongodb connections)
 pip uninstall -y bson pymongo
 pip install bson==0.5.7
 pip install pymongo==3.7.2
+
+## Etc
+We should maintain control of the data used on automated tests, we should orchestrate the scenarios and create/delete the data we need for using on our
+automated tests as needed.
+
+A great example is erasing all data used on the test environment and creating it again when running regression tests, as the test environment is a sandbox
+environment, we should be able to clean it and create new data as needed.
