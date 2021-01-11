@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "thumb": "acme.jpg",
+            "payload": {
+                "company": "Acme",
+                "techs": "Cobol, python",
+                "price": "10"
+            }
+        },
+        {
+            "thumb": "default.jpg",
+            "payload": {
+                "company": "Yahoo",
+                "techs": "Cobol, Ruby",
+                "price": "20"
+            }
+        },
+        {
+            "thumb": "yahoo.jpg",
+            "payload": {
+                "company": "Yahoo",
+                "techs": "Cobol, Java",
+                "price": "20"
+            }
+        },
+        {
+            "thumb": "google.jpg",
+            "payload": {
+                "company": "Google",
+                "techs": "Cobol, Python",
+                "price": "20"
+            }
+        }
+    ]
+}
