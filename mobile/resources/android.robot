@@ -23,7 +23,12 @@ ${waitTime}
 ## Hooks
 Abrir App
   Set Appium Timeout    30
-  Open Application    ${URL}   platformName=${platformName}    deviceName=${deviceName}   app=${app}    automatioName=${automationName}   autograntPermissions=${autoGrantPermissions}
+  Open Application    ${URL}   
+  ...                 platformName=${platformName}
+  ...                 deviceName=${deviceName}   
+  ...                 app=${app}
+  ...                 automatioName=${automationName}
+  ...                 autograntPermissions=${autoGrantPermissions}
 
 Fechar App
   Capture Page Screenshot
