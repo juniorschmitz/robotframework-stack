@@ -1,0 +1,35 @@
+pipeline {
+    agent {
+       docker {
+          image "qaninja/pywd"
+        }
+    }
+    stages {
+        stage("Install dependencies") {
+            steps {
+                sh "pip install -r requirements.txt"
+            }
+        }
+        stage("Run tests") {
+            steps {
+                sh "robot -d ./logs tests"
+            }
+            post {
+                always {
+                    robot otherFiles: "**/*.png", outputPath: "logs"
+                }
+            }
+        }
+        stage("UAT") {
+            steps {
+                input (message: "Go to production?", ok: "Deploying in production")
+                echo "simulating go to production! ;) ;)"
+            }
+        }
+        stage("Production") {
+            steps {
+                echo "WebApp is Ready!"
+            }
+        }
+    }
+}
