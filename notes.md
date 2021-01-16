@@ -70,3 +70,30 @@ automated tests as needed.
 
 A great example is erasing all data used on the test environment and creating it again when running regression tests, as the test environment is a sandbox
 environment, we should be able to clean it and create new data as needed.
+
+## Container/Docker in Docker
+The containers should be root, if not, the container is going to ask sudo permissions and the build is going to fail
+In some installations, this problem occurs, and it is not possible to run Jenkins pipelines using Docker containers as agents, there is another way for
+using Jenkins in containers below.
+
+## Another way for creating the Jenkins Container
+docker network create skynet
+docker volume create jenkins-data
+docker pull jenkinsci/blueocean
+### Linux
+docker container run --name jenkins-blueocean --detach \
+  --network skynet -u root \
+  --volume jenkins-data:/var/jenkins_home \
+  --volume /var/run/docker.sock:/var/run/docker.sock \
+  --publish 8080:8080 --publish 50000:50000 jenkinsci/blueocean
+### Windows
+docker container run --name jenkins-blueocean --detach ^
+  --network skynet -u root ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --volume /var/run/docker.sock:/var/run/docker.sock ^
+  --publish 8080:8080 --publish 50000:50000 jenkinsci/blueocean
+### Verify
+docker ps
+### Enter the container and get the secret
+docker exec -it jenkins-blueocean bash
+cat /var/jenkins_home/secrets/initialAdminPassword
